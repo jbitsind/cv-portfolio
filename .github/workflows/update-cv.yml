@@ -1,0 +1,23 @@
+name: Update CV PDF
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'cv.pdf'  # Adjust this if your CV PDF has a different name or path
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Add any build steps here if necessary
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # Adjust if your CV is in a subdirectory
